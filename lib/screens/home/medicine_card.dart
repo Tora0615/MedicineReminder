@@ -38,7 +38,7 @@ class MedicineCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             subtitle: Text(
-              "${medicine.amount} ${medicine.medicineForm}",
+              "${medicine.amount} ${medicine.type} (${medicine.medicineForm})",
               style: Theme.of(context).textTheme.headline5.copyWith(
                   color: Colors.grey[600],
                   fontSize: 15.0,
@@ -83,15 +83,15 @@ class MedicineCard extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text("Delete ?"),
-              content: Text("Are you sure to delete $medicineName medicine?"),
+              title: Text("刪除 ?"),
+              content: Text("確定刪除藥物 : $medicineName 嗎?"),
               contentTextStyle:
                   TextStyle(fontSize: 17.0, color: Colors.grey[800]),
               actions: [
                 FlatButton(
                   splashColor: Theme.of(context).primaryColor.withOpacity(0.3),
                   child: Text(
-                    "Cancel",
+                    "取消",
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                   onPressed: () {
@@ -100,7 +100,7 @@ class MedicineCard extends StatelessWidget {
                 ),
                 FlatButton(
                   splashColor: Theme.of(context).primaryColor.withOpacity(0.3),
-                  child: Text("Delete",
+                  child: Text("刪除",
                       style: TextStyle(color: Theme.of(context).primaryColor)),
                   onPressed: () async {
                     await Repository().deleteData('Pills', medicineId);

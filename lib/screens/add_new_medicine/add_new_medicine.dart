@@ -32,16 +32,11 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
   //list of medicines forms objects
   final List<MedicineType> medicineTypes = [
     MedicineType("糖漿", Image.asset("assets/images/syrup.png"), true),
-    MedicineType(
-        "藥片", Image.asset("assets/images/pills.png"), false),
-    MedicineType(
-        "膠囊", Image.asset("assets/images/capsule.png"), false),
-    MedicineType(
-        "乳膏", Image.asset("assets/images/cream.png"), false),
-    MedicineType(
-        "Drops", Image.asset("assets/images/drops.png"), false),
-    MedicineType(
-        "Syringe", Image.asset("assets/images/syringe.png"), false),
+    MedicineType("藥片", Image.asset("assets/images/pills.png"), false),
+    MedicineType("膠囊", Image.asset("assets/images/capsule.png"), false),
+    MedicineType("乳膏", Image.asset("assets/images/cream.png"), false),
+    MedicineType("Drops", Image.asset("assets/images/drops.png"), false),
+    MedicineType("Syringe", Image.asset("assets/images/syringe.png"), false),
   ];
 
   //-------------Pill object------------------
@@ -117,14 +112,15 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
               Container(
                 height: deviceHeight * 0.37,
                 child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: FormFields(
-                        howManyWeeks,
-                        selectWeight,
-                        popUpMenuItemChanged,
-                        sliderChanged,
-                        nameController,
-                        amountController)),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: FormFields(
+                      howManyWeeks,
+                      selectWeight,
+                      popUpMenuItemChanged,
+                      sliderChanged,
+                      nameController,
+                      amountController),
+                ),
               ),
               Container(
                 height: deviceHeight * 0.035,
@@ -231,7 +227,10 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                 height: deviceHeight * 0.09,
                 width: double.infinity,
                 child: PlatformFlatButton(
-                  handler: () async => savePill(),
+                  handler: () async {
+                     savePill();
+                     printInfo();
+                  },
                   color: Theme.of(context).primaryColor,
                   buttonChild: Text(
                     "完成",
@@ -309,13 +308,15 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
     if (setDate.millisecondsSinceEpoch <=
         DateTime.now().millisecondsSinceEpoch) {
       snackbar.showSnack(
-          "Check your medicine time and date", _scaffoldKey, null);
+          "請確認提醒時間是否沒有小於現在時間", _scaffoldKey, null);
     } else {
       //create pill object
       Pill pill = Pill(
           amount: amountController.text,
           howManyWeeks: howManyWeeks,
-          medicineForm: medicineTypes[medicineTypes.indexWhere((element) => element.isChoose == true)].name,
+          medicineForm: medicineTypes[medicineTypes
+                  .indexWhere((element) => element.isChoose == true)]
+              .name,
           name: nameController.text,
           time: setDate.millisecondsSinceEpoch,
           type: selectWeight,
@@ -332,7 +333,10 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
           //set the notification schneudele
           tz.initializeTimeZones();
           tz.setLocalLocation(tz.getLocation('Europe/Warsaw'));
-          await _notifications.showNotification(pill.name, pill.amount + " " + pill.medicineForm + " " + pill.type, time,
+          await _notifications.showNotification(
+              pill.name,
+              pill.amount + " " + pill.medicineForm + " " + pill.type,
+              time,
               pill.notifyId,
               flutterLocalNotificationsPlugin);
           setDate = setDate.add(Duration(milliseconds: 604800000));
@@ -362,4 +366,20 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
   int get time =>
       setDate.millisecondsSinceEpoch -
       tz.TZDateTime.now(tz.local).millisecondsSinceEpoch;
+
+
+  printInfo(){
+    print(amountController.text + ' - type : ' + amountController.text.runtimeType.toString());
+    print(howManyWeeks.toString() + ' - type : ' + howManyWeeks.runtimeType.toString());
+    print(medicineTypes[medicineTypes
+        .indexWhere((element) => element.isChoose == true)]
+        .name + ' - type : ' + medicineTypes[medicineTypes
+        .indexWhere((element) => element.isChoose == true)]
+        .name.runtimeType.toString());
+    print(nameController.text + ' - type : ' + nameController.text.runtimeType.toString());
+    print(setDate.millisecondsSinceEpoch.toString() + ' - type : ' + setDate.millisecondsSinceEpoch.runtimeType.toString());
+    print(selectWeight + ' - type : ' + selectWeight.runtimeType.toString());
+    print(setDate);
+    //print(setDate.add(Duration(hours: 4)));
+  }
 }
