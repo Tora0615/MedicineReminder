@@ -3,6 +3,7 @@ import 'package:animated_widgets/animated_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:medicine/screens/qr_canner/qr_scanner_page.dart';
 import '../../notifications/notifications.dart';
 import '../../database/repository.dart';
 import '../../models/pill.dart';
@@ -63,6 +64,7 @@ class _HomeState extends State<Home> {
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
     final Widget addButton = FloatingActionButton(
+      heroTag: 'addButton',
       elevation: 2.0,
       onPressed: () async {
         //refresh the pills from database
@@ -77,9 +79,31 @@ class _HomeState extends State<Home> {
       backgroundColor: Theme.of(context).primaryColor,
     );
 
+    final Widget addByQR = FloatingActionButton(
+      heroTag: 'addByQR',
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const QRViewExample(),
+        ),);
+      },
+      child: Icon(
+        Icons.qr_code,
+        color: Colors.white,
+        size: 24.0,
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+    );
+
     return Scaffold(
-      floatingActionButton: addButton,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          addByQR,
+          SizedBox(height: 5,),
+          addButton,
+        ],
+      ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -143,7 +167,10 @@ class _HomeState extends State<Home> {
                         ),
                       )
                     : MedicinesList(
-                        dailyPills, setData, flutterLocalNotificationsPlugin)
+                        dailyPills,
+                        setData,
+                        flutterLocalNotificationsPlugin,
+                      ),
               ],
             ),
           ),
