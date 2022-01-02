@@ -10,7 +10,6 @@ import '../../models/pill.dart';
 import '../../screens/home/medicines_list.dart';
 import '../../screens/home/calendar.dart';
 import '../../models/calendar_day_model.dart';
-import '../qr_canner/save_fake_pills.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -82,14 +81,12 @@ class _HomeState extends State<Home> {
 
     final Widget addByQR = FloatingActionButton(
       heroTag: 'addByQR',
-      onPressed: () {
-        // Navigator.of(context).push(MaterialPageRoute(
-        //   builder: (context) => const QRViewExample(),
-        // ),);
-        FakeAdder fakeAdder = FakeAdder('藥物A','2','顆',1,'藥片');
-        setState(() {
-          fakeAdder.savePill();
-        });
+      onPressed: () async{
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const QRViewExample(),
+          ),
+        ).then((_) => setData());
       },
       child: Icon(
         Icons.qr_code,
@@ -104,7 +101,9 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           addByQR,
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           addButton,
         ],
       ),

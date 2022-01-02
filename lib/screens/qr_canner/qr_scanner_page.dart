@@ -4,29 +4,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import '../qr_canner/save_fake_pills.dart';
 
-// void main() => runApp(const MaterialApp(home: MyHome()));
-//
-// class MyHome extends StatelessWidget {
-//   const MyHome({Key key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Flutter Demo Home Page')),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () {
-//             Navigator.of(context).push(MaterialPageRoute(
-//               builder: (context) => const QRViewExample(),
-//             ));
-//           },
-//           child: const Text('qrView'),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class QRViewExample extends StatefulWidget {
   const QRViewExample({Key key}) : super(key: key);
@@ -53,91 +32,103 @@ class _QRViewExampleState extends State<QRViewExample> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Expanded(flex: 4, child: _buildQrView(context)),
+          Expanded(flex: 5, child: _buildQrView(context)),
           Expanded(
-            flex: 1,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  if (result != null)
-                    Text(
-                        'Barcode Type: ${describeEnum(result.format)}   Data: ${result.code}')
-                  else
-                    const Text('Scan a code'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data)}');
-                                } else {
-                                  return const Text('loading');
-                                }
-                              },
-                            )),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.pauseCamera();
-                          },
-                          child: const Text('pause',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.resumeCamera();
-                          },
-                          child: const Text('resume',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Center(
+                child: Text(
+                  '請掃描藥袋上的 QR code',
+                  style: TextStyle(fontSize: 32),
+                ),
               ),
             ),
           )
+          // Expanded(
+          //   flex: 1,
+          //   child: FittedBox(
+          //     fit: BoxFit.contain,
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //       children: <Widget>[
+          //         if (result != null)
+          //           Text(
+          //               'Barcode Type: ${describeEnum(result.format)}   Data: ${result.code}')
+          //         else
+          //           const Text('Scan a code'),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: <Widget>[
+          //             Container(
+          //               margin: const EdgeInsets.all(8),
+          //               child: ElevatedButton(
+          //                   onPressed: () async {
+          //                     await controller?.toggleFlash();
+          //                     setState(() {});
+          //                   },
+          //                   child: FutureBuilder(
+          //                     future: controller?.getFlashStatus(),
+          //                     builder: (context, snapshot) {
+          //                       return Text('Flash: ${snapshot.data}');
+          //                     },
+          //                   )),
+          //             ),
+          //             Container(
+          //               margin: const EdgeInsets.all(8),
+          //               child: ElevatedButton(
+          //                   onPressed: () async {
+          //                     await controller?.flipCamera();
+          //                     setState(() {});
+          //                   },
+          //                   child: FutureBuilder(
+          //                     future: controller?.getCameraInfo(),
+          //                     builder: (context, snapshot) {
+          //                       if (snapshot.data != null) {
+          //                         return Text(
+          //                             'Camera facing ${describeEnum(snapshot.data)}');
+          //                       } else {
+          //                         return const Text('loading');
+          //                       }
+          //                     },
+          //                   )),
+          //             )
+          //           ],
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: <Widget>[
+          //             Container(
+          //               margin: const EdgeInsets.all(8),
+          //               child: ElevatedButton(
+          //                 onPressed: () async {
+          //                   await controller?.pauseCamera();
+          //                 },
+          //                 child: const Text('pause',
+          //                     style: TextStyle(fontSize: 20)),
+          //               ),
+          //             ),
+          //             Container(
+          //               margin: const EdgeInsets.all(8),
+          //               child: ElevatedButton(
+          //                 onPressed: () async {
+          //                   await controller?.resumeCamera();
+          //                 },
+          //                 child: const Text('resume',
+          //                     style: TextStyle(fontSize: 20)),
+          //               ),
+          //             )
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
@@ -146,7 +137,7 @@ class _QRViewExampleState extends State<QRViewExample> {
   Widget _buildQrView(BuildContext context) {
     // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
     var scanArea = (MediaQuery.of(context).size.width < 400 ||
-        MediaQuery.of(context).size.height < 400)
+            MediaQuery.of(context).size.height < 400)
         ? 150.0
         : 300.0;
     // To ensure the Scanner view is properly sizes after rotation
@@ -164,14 +155,28 @@ class _QRViewExampleState extends State<QRViewExample> {
     );
   }
 
+  void addPills() async{
+    FakeAdder fakeAdder = await FakeAdder('藥物A','2','顆',1,'藥片');
+    await fakeAdder.savePill();
+    FakeAdder fakeAdder2 = await FakeAdder('藥物B','3','毫升',1,'糖漿');
+    await fakeAdder2.savePill();
+    FakeAdder fakeAdder3 = await FakeAdder('藥物C','1','顆',1,'膠囊');
+    await fakeAdder3.savePill();
+  }
+
   void _onQRViewCreated(QRViewController controller) {
     setState(() {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
+      //setState(() {
+      result = scanData;
+      //});
+      if (result!=null){
+        addPills();
+        controller?.dispose();  //close camera
+        Navigator.pop(context);
+      }
     });
   }
 

@@ -79,15 +79,15 @@ class FakeAdder{
           return;
         } else {
           //set the notification schneudele
-          tz.initializeTimeZones();
-          tz.setLocalLocation(tz.getLocation('Europe/Warsaw'));
-          await _notifications.showNotification(
-              pill.name,
-              pill.amount + " " + pill.medicineForm + " " + pill.type,
-              time,
-              pill.notifyId,
-              flutterLocalNotificationsPlugin);
-          print(time);
+          // tz.initializeTimeZones();
+          // tz.setLocalLocation(tz.getLocation('Europe/Warsaw'));
+          // await _notifications.showNotification(
+          //     pill.name,
+          //     pill.amount + " " + pill.medicineForm + " " + pill.type,
+          //     time,
+          //     pill.notifyId,
+          //     flutterLocalNotificationsPlugin);
+          // print(time);
           setDate = setDate.add(Duration(milliseconds: 604800000));
           pill.time = setDate.millisecondsSinceEpoch;
           pill.notifyId = Random().nextInt(10000000);
@@ -96,12 +96,12 @@ class FakeAdder{
       //---------------------------------------------------------------------------------------
       //snackbar.showSnack("Saved", _scaffoldKey, null);
       // Navigator.pop(context);
-      print('Saved');
+      //print('Saved');
     }
   }
 
   //get time difference
   int get time =>
-      setDate.millisecondsSinceEpoch -
+      setDate.add(Duration(hours: 4)).millisecondsSinceEpoch -
           tz.TZDateTime.now(tz.local).millisecondsSinceEpoch;
 }

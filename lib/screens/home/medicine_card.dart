@@ -71,7 +71,7 @@ class MedicineCard extends StatelessWidget {
                         BlendMode.saturation),
                     child: Image.asset(
                       medicine.image
-                    )),
+                    ),),
               ),
             )));
   }
