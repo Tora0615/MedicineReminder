@@ -16,7 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   //-------------------| Flutter notifications |-------------------
   final Notifications _notifications = Notifications();
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -45,8 +44,8 @@ class _HomeState extends State<Home> {
   }
 
   //init notifications
-  Future initNotifies() async => flutterLocalNotificationsPlugin = await _notifications.initNotifies(context);
-
+  Future initNotifies() async => flutterLocalNotificationsPlugin =
+      await _notifications.initNotifies(context);
 
   //--------------------GET ALL DATA FROM DATABASE---------------------
   Future setData() async {
@@ -101,14 +100,14 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Journal",
+                          "近期服藥提醒",
                           style: Theme.of(context)
                               .textTheme
                               .headline1
                               .copyWith(color: Colors.black),
                         ),
                         ShakeAnimatedWidget(
-                          enabled: true,
+                          enabled: false,
                           duration: Duration(milliseconds: 2000),
                           curve: Curves.linear,
                           shakeAngle: Rotation.deg(z: 30),
@@ -126,26 +125,25 @@ class _HomeState extends State<Home> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Calendar(chooseDay,_daysList),
+                  child: Calendar(chooseDay, _daysList),
                 ),
                 SizedBox(height: deviceHeight * 0.03),
                 dailyPills.isEmpty
                     ? SizedBox(
                         width: double.infinity,
                         height: 100,
-                        child: WavyAnimatedTextKit(
-                          textStyle: TextStyle(
-                              fontSize: 32.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          text: [
-                            "Loading..."
-                          ],
-                          isRepeatingAnimation: true,
-                          speed: Duration(milliseconds: 150),
+                        child: Center(
+                          child: Text(
+                            '暫無紀錄',
+                            style: TextStyle(
+                                fontSize: 32.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
                         ),
                       )
-                    : MedicinesList(dailyPills,setData,flutterLocalNotificationsPlugin)
+                    : MedicinesList(
+                        dailyPills, setData, flutterLocalNotificationsPlugin)
               ],
             ),
           ),
@@ -154,27 +152,28 @@ class _HomeState extends State<Home> {
     );
   }
 
-
   //-------------------------| Click on the calendar day |-------------------------
 
-  void chooseDay(CalendarDayModel clickedDay){
+  void chooseDay(CalendarDayModel clickedDay) {
     setState(() {
       _lastChooseDay = _daysList.indexOf(clickedDay);
-      _daysList.forEach((day) => day.isChecked = false );
+      _daysList.forEach((day) => day.isChecked = false);
       CalendarDayModel chooseDay = _daysList[_daysList.indexOf(clickedDay)];
       chooseDay.isChecked = true;
       dailyPills.clear();
       allListOfPills.forEach((pill) {
-        DateTime pillDate = DateTime.fromMicrosecondsSinceEpoch(pill.time * 1000);
-        if(chooseDay.dayNumber == pillDate.day && chooseDay.month == pillDate.month && chooseDay.year == pillDate.year){
+        DateTime pillDate =
+            DateTime.fromMicrosecondsSinceEpoch(pill.time * 1000);
+        if (chooseDay.dayNumber == pillDate.day &&
+            chooseDay.month == pillDate.month &&
+            chooseDay.year == pillDate.year) {
           dailyPills.add(pill);
         }
       });
-      dailyPills.sort((pill1,pill2) => pill1.time.compareTo(pill2.time));
+      dailyPills.sort((pill1, pill2) => pill1.time.compareTo(pill2.time));
     });
   }
 
   //===============================================================================
-
 
 }

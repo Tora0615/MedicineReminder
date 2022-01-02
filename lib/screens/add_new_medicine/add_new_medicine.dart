@@ -27,17 +27,17 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
   final Snackbar snackbar = Snackbar();
 
   //medicine types
-  final List<String> weightValues = ["pills", "ml", "mg"];
+  final List<String> weightValues = ["顆", "毫升", "微克"];
 
   //list of medicines forms objects
   final List<MedicineType> medicineTypes = [
-    MedicineType("Syrup", Image.asset("assets/images/syrup.png"), true),
+    MedicineType("糖漿", Image.asset("assets/images/syrup.png"), true),
     MedicineType(
-        "Pill", Image.asset("assets/images/pills.png"), false),
+        "藥片", Image.asset("assets/images/pills.png"), false),
     MedicineType(
-        "Capsule", Image.asset("assets/images/capsule.png"), false),
+        "膠囊", Image.asset("assets/images/capsule.png"), false),
     MedicineType(
-        "Cream", Image.asset("assets/images/cream.png"), false),
+        "乳膏", Image.asset("assets/images/cream.png"), false),
     MedicineType(
         "Drops", Image.asset("assets/images/drops.png"), false),
     MedicineType(
@@ -104,7 +104,7 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                 height: deviceHeight * 0.05,
                 child: FittedBox(
                     child: Text(
-                  "Add Pills",
+                  "新增藥物提醒",
                   style: Theme.of(context)
                       .textTheme
                       .headline3
@@ -132,10 +132,10 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                   padding: const EdgeInsets.only(left: 16.0),
                   child: FittedBox(
                     child: Text(
-                      "Medicine form",
+                      "藥物種類",
                       style: TextStyle(
                           color: Colors.grey[800],
-                          fontSize: 18.0,
+                          fontSize: 24.0,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -176,7 +176,7 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                               Text(
                                 DateFormat.Hm().format(this.setDate),
                                 style: TextStyle(
-                                    fontSize: 32.0,
+                                    fontSize: 28.0,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -207,7 +207,7 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                               Text(
                                 DateFormat("dd.MM").format(this.setDate),
                                 style: TextStyle(
-                                    fontSize: 32.0,
+                                    fontSize: 28.0,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -234,11 +234,11 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                   handler: () async => savePill(),
                   color: Theme.of(context).primaryColor,
                   buttonChild: Text(
-                    "Done",
+                    "完成",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
-                        fontSize: 17.0),
+                        fontSize: 20.0),
                   ),
                 ),
               )
