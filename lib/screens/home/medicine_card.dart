@@ -23,7 +23,7 @@ class MedicineCard extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             onLongPress: () =>
                 _showDeleteDialog(context, medicine.name, medicine.id, medicine.notifyId),
             contentPadding:
@@ -64,7 +64,7 @@ class MedicineCard extends StatelessWidget {
               width: 60.0,
               height: 60.0,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
+                borderRadius: BorderRadius.circular(5.0),
                 child: ColorFiltered(
                     colorFilter: ColorFilter.mode(
                         isEnd ? Colors.white : Colors.transparent,

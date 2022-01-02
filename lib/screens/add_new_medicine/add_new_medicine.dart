@@ -35,8 +35,8 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
     MedicineType("藥片", Image.asset("assets/images/pills.png"), false),
     MedicineType("膠囊", Image.asset("assets/images/capsule.png"), false),
     MedicineType("乳膏", Image.asset("assets/images/cream.png"), false),
-    MedicineType("Drops", Image.asset("assets/images/drops.png"), false),
-    MedicineType("Syringe", Image.asset("assets/images/syringe.png"), false),
+    // MedicineType("Drops", Image.asset("assets/images/drops.png"), false),
+    // MedicineType("Syringe", Image.asset("assets/images/syringe.png"), false),
   ];
 
   //-------------Pill object------------------

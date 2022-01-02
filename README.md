@@ -48,3 +48,13 @@ samples, guidance on mobile development, and a full API reference.
 <img src= "scr/home_screen.png"  width="40%">
 <img src= "scr/home_screen_2.png"  width="40%">
 <img src= "scr/notify_screen.png"  width="40%">
+
+
+
+Some Urls
+https://www.flaticon.com/free-icon/medical-report_2464568
+https://www.flaticon.com/free-icon/syrup_3209036?related_id=3209121&origin=search
+https://www.flaticon.com/free-icon/cream_1581814?related_id=1581866&origin=search
+https://www.flaticon.com/free-icon/pill_684284
+https://www.flaticon.com/premium-icon/pills_4257152
+https://www.flaticon.com/free-icon/medicament_6512318
