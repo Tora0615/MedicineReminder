@@ -155,13 +155,13 @@ class _QRViewExampleState extends State<QRViewExample> {
     );
   }
 
-  void addPills() async{
-    FakeAdder fakeAdder = await FakeAdder('藥物A','2','顆',1,'藥片');
-    await fakeAdder.savePill();
-    FakeAdder fakeAdder2 = await FakeAdder('藥物B','3','毫升',1,'糖漿');
-    await fakeAdder2.savePill();
-    FakeAdder fakeAdder3 = await FakeAdder('藥物C','1','顆',1,'膠囊');
-    await fakeAdder3.savePill();
+  void addPills() {
+    FakeAdder fakeAdder =  FakeAdder('藥物A','2','顆',1,'藥片');
+    fakeAdder.savePill();
+    FakeAdder fakeAdder2 =  FakeAdder('藥物B','3','毫升',1,'糖漿');
+    fakeAdder2.savePill();
+    FakeAdder fakeAdder3 =  FakeAdder('藥物C','1','顆',1,'膠囊');
+    fakeAdder3.savePill();
   }
 
   void _onQRViewCreated(QRViewController controller) {
@@ -172,9 +172,9 @@ class _QRViewExampleState extends State<QRViewExample> {
       //setState(() {
       result = scanData;
       //});
-      if (result!=null){
-        addPills();
+      if (result!=null) {
         controller?.dispose();  //close camera
+        addPills();
         Navigator.pop(context);
       }
     });

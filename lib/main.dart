@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:medicine/screens/add_new_medicine/add_new_medicine.dart';
 import 'package:medicine/screens/home/home.dart';
 import './screens/welcome/welcome.dart';
+import 'package:medicine/screens/elder/elder_switch.dart';
 
 void main() {
   runApp(MedicineApp());
@@ -42,6 +43,7 @@ class MedicineApp extends StatelessWidget {
         "/": (context) => Welcome(),
         "/home": (context) => Home(),
         "/add_new_medicine": (context) => AddNewMedicine(),
+        "/elder_switch" : (context) => ElderSwitch(),
       },
       initialRoute: "/",
     );

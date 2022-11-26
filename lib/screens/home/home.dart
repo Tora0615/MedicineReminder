@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animated_widgets/animated_widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +12,9 @@ import '../../models/pill.dart';
 import '../../screens/home/medicines_list.dart';
 import '../../screens/home/calendar.dart';
 import '../../models/calendar_day_model.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:medicine/screens/elder/elder_switch.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -45,8 +50,12 @@ class _HomeState extends State<Home> {
   }
 
   //init notifications
-  Future initNotifies() async => flutterLocalNotificationsPlugin =
-      await _notifications.initNotifies(context);
+  Future initNotifies() async {
+    flutterLocalNotificationsPlugin =
+        await _notifications.initNotifies(context);
+    tz.initializeTimeZones();
+    tz.setLocalLocation(tz.getLocation('Europe/Warsaw'));
+  }
 
   //--------------------GET ALL DATA FROM DATABASE---------------------
   Future setData() async {
@@ -81,15 +90,36 @@ class _HomeState extends State<Home> {
 
     final Widget addByQR = FloatingActionButton(
       heroTag: 'addByQR',
-      onPressed: () async{
-        await Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const QRViewExample(),
-          ),
-        ).then((_) => setData());
+      onPressed: () async {
+        await Navigator.of(context)
+            .push(
+              MaterialPageRoute(
+                builder: (context) => const QRViewExample(),
+              ),
+            )
+            .then((_) => setData());
       },
       child: Icon(
         Icons.qr_code,
+        color: Colors.white,
+        size: 24.0,
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+    );
+
+    final Widget changeMode = FloatingActionButton(
+      heroTag: 'changeMode',
+      onPressed: () async {
+        await Navigator.of(context)
+            .push(
+          MaterialPageRoute(
+            builder: (context) => const ElderSwitch(),
+          ),
+        )
+            .then((_) => setData());
+      },
+      child: Icon(
+        Icons.cached,
         color: Colors.white,
         size: 24.0,
       ),
@@ -100,6 +130,11 @@ class _HomeState extends State<Home> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          // For test
+          // changeMode,
+          // SizedBox(
+          //   height: 5,
+          // ),
           addByQR,
           SizedBox(
             height: 5,
@@ -139,9 +174,23 @@ class _HomeState extends State<Home> {
                           duration: Duration(milliseconds: 2000),
                           curve: Curves.linear,
                           shakeAngle: Rotation.deg(z: 30),
-                          child: Icon(
-                            Icons.notifications_none,
-                            size: 42.0,
+                          child: InkWell(
+                            child: Icon(
+                              Icons.notifications_none,
+                              size: 42.0,
+                            ),
+                            onTap: () async {
+                              // For Demo only
+                              print('tap');
+
+                              await _notifications.showNotification(
+                                'Name',
+                                'Description',
+                                1, // 1 sec 後叫
+                                Random().nextInt(10000000),
+                                flutterLocalNotificationsPlugin,
+                              );
+                            },
                           ),
                         )
                       ],

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import '../../helpers/platform_flat_button.dart';
 import '../../screens/welcome/title_and_message.dart';
 
+
 class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double deviceHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
-    void goToHomeScreen() => Navigator.pushReplacementNamed(context, "/home");
+    void goToHomeScreen() => Navigator.pushReplacementNamed(context, "/elder_switch");
 
     return Scaffold(
       body: SafeArea(
@@ -26,14 +27,14 @@ class Welcome extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: deviceHeight * 0.05,
+              height: deviceHeight * 0.035,
             ),
             TitleAndMessage(deviceHeight),
             SizedBox(
-              height: deviceHeight * 0.03,
+              height: deviceHeight * 0.015,
             ),
             Container(
-              height: deviceHeight * 0.08,
+              height: deviceHeight * 0.07,
               width: double.infinity,
               child: Padding(
                   padding: const EdgeInsets.only(left: 35.0, right: 35.0),
