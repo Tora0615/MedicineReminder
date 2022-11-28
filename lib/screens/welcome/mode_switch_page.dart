@@ -13,7 +13,7 @@ class ModeSwitch extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         if (_lastPressedAt == null ||
-            DateTime.now().difference(_lastPressedAt) > Duration(seconds: 1)) {
+            DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
           //两次点击间隔超过1秒则重新计时
 
           // warning msg

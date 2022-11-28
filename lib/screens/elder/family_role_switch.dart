@@ -28,7 +28,7 @@ class FamilyRoleSwitch extends StatelessWidget {
               child: Center(
                 child: Text(
                   "家庭模式中分為 : \n"
-                  "1. 給照顧者了解長輩身體狀況與是否吃藥的頁面\n"
+                  "1. 給照顧者了解長輩身體狀況與是否有吃藥的頁面\n"
                   "2. 給長輩使用的極簡易模式",
                   style: TextStyle(
                     fontSize: 18,
@@ -55,9 +55,9 @@ class FamilyRoleSwitch extends StatelessWidget {
                 height: 125,
                 child: Center(
                   child: Text(
-                    "長者健康與\n吃藥現況",
+                    "監護者模式\n(健康與吃藥現況)",
                     style: TextStyle(
-                      fontSize: 36,
+                      fontSize: 26,
                       color: Colors.black,
                     ),
                   ),
@@ -82,9 +82,9 @@ class FamilyRoleSwitch extends StatelessWidget {
                 height: 125,
                 child: Center(
                   child: Text(
-                    "長者模式",
+                    "長者模式\n(簡易模式)",
                     style: TextStyle(
-                      fontSize: 48,
+                      fontSize: 28,
                       color: Colors.black,
                     ),
                   ),
