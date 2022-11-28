@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:medicine/screens/add_new_medicine/add_new_medicine.dart';
 import 'package:medicine/screens/home/home.dart';
-import './screens/welcome/welcome.dart';
-import 'package:medicine/screens/elder/elder_switch.dart';
+import 'package:medicine/screens/welcome/mode_switch_page.dart';
+import 'package:medicine/screens/elder/family_role_switch.dart';
 
 void main() {
   runApp(MedicineApp());
@@ -40,10 +39,10 @@ class MedicineApp extends StatelessWidget {
                     fontFamily: "Popins",
                   ))),
       routes: {
-        "/": (context) => Welcome(),
+        "/": (context) => ModeSwitch(),
         "/home": (context) => Home(),
         "/add_new_medicine": (context) => AddNewMedicine(),
-        "/elder_switch" : (context) => ElderSwitch(),
+        "/elder_switch" : (context) => FamilyRoleSwitch(),
       },
       initialRoute: "/",
     );

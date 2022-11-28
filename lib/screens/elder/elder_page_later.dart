@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicine/screens/elder/elder_page_finish.dart';
 
 class ElderLater extends StatelessWidget {
   const ElderLater({Key key}) : super(key: key);
@@ -83,7 +84,13 @@ class ElderLater extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ElderFinished()),
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(

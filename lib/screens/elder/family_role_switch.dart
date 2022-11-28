@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medicine/screens/bodyinfomonitor/body_info_monitor_page.dart';
 import 'elder_page.dart';
 import 'package:medicine/screens/home/home.dart';
 
-class ElderSwitch extends StatelessWidget {
-  const ElderSwitch({Key key}) : super(key: key);
+class FamilyRoleSwitch extends StatelessWidget {
+  const FamilyRoleSwitch({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,32 @@ class ElderSwitch extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                //color: Colors.grey[300],
+              ),
+              width: 300,
+              height: 125,
+              child: Center(
+                child: Text(
+                  "家庭模式中分為 : \n"
+                  "1. 給照顧者了解長輩身體狀況與是否吃藥的頁面\n"
+                  "2. 給長輩使用的極簡易模式",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(builder: (context) => BodyInfo()),
                 );
               },
               child: Container(
@@ -31,12 +52,12 @@ class ElderSwitch extends StatelessWidget {
                   color: Colors.grey[300],
                 ),
                 width: 250,
-                height: 250,
+                height: 125,
                 child: Center(
                   child: Text(
-                    "一般模式",
+                    "長者健康與\n吃藥現況",
                     style: TextStyle(
-                      fontSize: 48,
+                      fontSize: 36,
                       color: Colors.black,
                     ),
                   ),
@@ -58,7 +79,7 @@ class ElderSwitch extends StatelessWidget {
                   color: Colors.amber[300],
                 ),
                 width: 250,
-                height: 250,
+                height: 125,
                 child: Center(
                   child: Text(
                     "長者模式",

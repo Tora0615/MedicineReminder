@@ -14,7 +14,7 @@ import '../../screens/home/calendar.dart';
 import '../../models/calendar_day_model.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-import 'package:medicine/screens/elder/elder_switch.dart';
+import 'package:medicine/screens/elder/family_role_switch.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -113,7 +113,7 @@ class _HomeState extends State<Home> {
         await Navigator.of(context)
             .push(
           MaterialPageRoute(
-            builder: (context) => const ElderSwitch(),
+            builder: (context) => const FamilyRoleSwitch(),
           ),
         )
             .then((_) => setData());
