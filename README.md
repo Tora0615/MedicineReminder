@@ -2,61 +2,18 @@
 
 #### A Flutter application, which you can save medicines and app will be send remind when you have to take it :bell:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-### App branches :
-
-| Branch Name | Feature | Link |
-| :---:         |     :---:      |         :---: |
-| master   | notifications, details, setup app     | [master](https://github.com/F-Y-E-F/Medicine-App-In-Flutter)   |
-| feature/setup_database   | setup local sqflite database  | [feature/setup_database](https://github.com/F-Y-E-F/Medicine-App-In-Flutter/tree/feature/setup_database)   |
-| feature/routes   | setup navigation     | [feature/routes](https://github.com/F-Y-E-F/Medicine-App-In-Flutter/tree/feature/routes)   |
-| feature/home_screen   | create home screen ui    | [feature/home_screen](https://github.com/F-Y-E-F/Medicine-App-In-Flutter/tree/feature/home_screen)   |
-| feature/add_pill_screen  | create add pill screen ui    | [feature/add_pill_screen](https://github.com/F-Y-E-F/Medicine-App-In-Flutter/tree/feature/add_pill_screen)   |
 
 
-### Used Techology:
+Fork from https://github.com/gonciuu/Medicine-App-In-Flutter and have some changes.
 
-- flutter cupertino icons :iphone: [link](https://pub.dev/packages/cupertino_icons)
-- flutter intl :calendar: [link](https://pub.dev/packages/intl)
-- flutter sqflite :clipboard: [link](https://pub.dev/packages/sqflite)
-- flutter auto size text :memo: [link](https://pub.dev/packages/auto_size_text)
-- flutter path :rocket: [link](https://pub.dev/packages/path)
-- flutter local notifications :bell: [link](https://pub.dev/packages/local_notifications)
-- flutter timezone 	:clock1230: [link](https://pub.dev/packages/timezone)
-- flutter animated text kit :memo: [link](https://pub.dev/packages/animated_text_kit)
-- flutter animated widgets :eye_speech_bubble: [link](https://pub.dev/packages/animated_widgets)
-
-### App features :
-- [x] Save medicines in local database
-- [x] Show notification in correct time
-- [x] Delete medicines
-
-
-
-### Screenshots :
-
-<img src= "scr/welcome_screen.png"  width="40%">
-<img src= "scr/add_pills_screen.png"  width="40%">
-<img src= "scr/home_screen.png"  width="40%">
-<img src= "scr/home_screen_2.png"  width="40%">
-<img src= "scr/notify_screen.png"  width="40%">
-
-
-
-Some Urls
-https://www.flaticon.com/free-icon/medical-report_2464568
-https://www.flaticon.com/free-icon/syrup_3209036?related_id=3209121&origin=search
-https://www.flaticon.com/free-icon/cream_1581814?related_id=1581866&origin=search
-https://www.flaticon.com/free-icon/pill_684284
-https://www.flaticon.com/premium-icon/pills_4257152
-https://www.flaticon.com/free-icon/medicament_6512318
-
-https://www.youtube.com/watch?v=rZod6sm1DQ8&ab_channel=projectworlds
+#### New Screenshots
+<img src= "scr/1.jpg"  width="20%">
+<img src= "scr/2.jpg"  width="20%">
+<img src= "scr/3.jpg"  width="20%">
+<img src= "scr/4.jpg"  width="20%">
+<img src= "scr/5.jpg"  width="20%">
+<img src= "scr/6.jpg"  width="20%">
+<img src= "scr/7.jpg"  width="20%">
+<img src= "scr/8.jpg"  width="20%">
+<img src= "scr/9.jpg"  width="20%">
+<img src= "scr/10.jpg"  width="20%">
